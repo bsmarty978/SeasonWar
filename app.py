@@ -2,8 +2,22 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import sqlite3
 from typing import List, Optional
+from fastapi.middleware.cors import CORSMiddleware
+import os
 
-app = FastAPI()
+app = FastAPI(
+    title="Seasons-War API",
+    version="0.1",
+    description="This is API for Seasons War Game, where user can vote to any season they want to. Also, can check the current votes of each season."
+)
+app.add_middleware(
+    CORSMiddleware,
+    # allow_origins=[os.getenv('ALLOW_ORIGINS', 'http://localhost:3000')],  # Frontend URL
+    allow_origins=['*','http://localhost:3000'],  # Frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Initialize the database when the app starts
 def init_db():

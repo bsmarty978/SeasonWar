@@ -1,3 +1,4 @@
 # created by virtualenv automatically
 seasonwar_lib/
 __pycache__/
+.env
