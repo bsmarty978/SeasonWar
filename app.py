@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 import os
 
 app = FastAPI(
@@ -59,6 +60,11 @@ class Vote(BaseModel):
 # Pydantic model for reset input (optional list of seasons)
 class ResetVotes(BaseModel):
     seasons: Optional[List[str]] = None
+
+# Redirect from root to docs
+@app.get("/")
+async def read_root():
+    return RedirectResponse(url="/docs")
 
 @app.get("/votes")
 def get_votes():
