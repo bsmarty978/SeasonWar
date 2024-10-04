@@ -2,3 +2,6 @@
 seasonwar_lib/
 __pycache__/
 .env
+*.py[cod]
+*.db
+
