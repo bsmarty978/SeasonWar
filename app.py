@@ -28,6 +28,7 @@ class VoteCounter:
             "spring": 0,
             "summer": 0,
             "autumn": 0,
+            "monsoon": 0,
             "winter": 0
         }
 
